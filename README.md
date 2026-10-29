@@ -212,6 +212,12 @@ L'app demande un mot de passe à l'ouverture. Il ne sert pas seulement à masque
   node scripts/make-config.mjs 'nouveau mot de passe' <sheetId ou URL du Sheet> [nomOnglet]
   ```
 
+  Le script affiche la longueur du mot de passe chiffré : si elle ne correspond pas, le shell l'a modifié (`$` ou `!` entre guillemets doubles). Toujours utiliser des guillemets simples, puis vérifier avant de committer :
+
+  ```
+  node scripts/check-password.mjs 'nouveau mot de passe'
+  ```
+
   puis incrémenter la version du cache dans [`docs/sw.js`](docs/sw.js), committer et fusionner. Les appareils déjà connectés devront ressaisir le mot de passe.
 - « Se souvenir sur cet appareil » garde la clé dérivée dans le navigateur. « Se déconnecter » l'efface.
 

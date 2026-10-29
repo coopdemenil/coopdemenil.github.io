@@ -35,4 +35,9 @@ window.COOP_CONFIG = ${JSON.stringify({ iterations: ITERATIONS, salt: b64(salt),
 `;
 const dest = join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'config.js');
 writeFileSync(dest, out);
-console.log(`docs/config.js écrit (Sheet ${sheetId}, onglet ${transactionsSheet}). Pensez à incrémenter la version du cache dans docs/sw.js.`);
+const n = [...password].length;
+const masked = n <= 2 ? '*'.repeat(n) : `${[...password][0]}${'*'.repeat(n - 2)}${[...password][n - 1]}`;
+console.log(`docs/config.js écrit (Sheet ${sheetId.slice(0, 8)}…, onglet ${transactionsSheet}).`);
+console.log(`Mot de passe chiffré : ${masked} (${n} caractères). Vérifiez que la longueur et les extrémités correspondent.`);
+console.log("Testez-le avant de committer : node scripts/check-password.mjs '<mot de passe>'");
+console.log('Puis incrémentez la version du cache dans docs/sw.js.');
