@@ -171,7 +171,7 @@ Première brique, sans Apps Script : une page web statique dans [`docs/`](docs/)
 - **URL** : https://coopdemenil.github.io/ (le dépôt s'appelle `coopdemenil.github.io` : c'est ce nom qui fait que GitHub Pages sert `docs/` à la racine du domaine ; les anciennes adresses `https://coopdemenil.github.io/scan/…` sont redirigées par [`docs/404.html`](docs/404.html), les QR déjà imprimés ou partagés restent valables)
 - **Source unique** : l'onglet **Transactions** du Google Sheet, qui contient l'export CSV des transactions Open Collective. Aucun autre onglet n'est lu.
 - **Identifiant d'une carte** : le pseudo Open Collective du contributeur, colonne « Opposite Account Handle » (ex. `max73`). C'est ce que le QR code encode, sous la forme `https://coopdemenil.github.io/?id=max73`.
-- **Ce qu'affiche l'app après un scan** : le nom du contributeur, son palier (texte entre parenthèses de la description, ex. « Cotisation mensuelle »), « À jour ce mois-ci » ou « Pas de contribution ce mois-ci », la date et le montant de la dernière contribution, et le montant net des 6 derniers mois.
+- **Ce qu'affiche l'app après un scan** : le nom du contributeur, son palier, réduit à deux valeurs : « Cotisation mensuelle » dès que la description Open Collective se termine par un palier entre parenthèses (« Cotisation mensuelle », « Précaires, étudiants, RSA… », etc.), sinon « Don ponctuel », « À jour ce mois-ci » ou « Pas de contribution ce mois-ci », la date et le montant de la dernière contribution, et le montant net des 6 derniers mois.
 - **Route `?id=<pseudo>`** : affiche directement la fiche, pour un QR scanné avec l'app caméra native du téléphone.
 - **Cartes de test** : https://coopdemenil.github.io/cartes liste les sociétaires avec leur QR, une recherche par nom ou pseudo, et ouvre la fiche d'un sociétaire au toucher.
 
@@ -180,7 +180,7 @@ Première brique, sans Apps Script : une page web statique dans [`docs/`](docs/)
 - Seules les lignes `Kind = CONTRIBUTION` comptent.
 - Les remboursements (`Credit/Debit = DEBIT`, montant négatif) se soustraient du mois où ils tombent. Un mois est « payé » si son montant net est positif.
 - Si la colonne « Is Reversed » existe et est remplie, la ligne est ignorée.
-- Nom et palier d'un contributeur viennent de sa contribution créditée la plus récente.
+- Nom et palier d'un contributeur viennent de sa contribution créditée la plus récente. Un membre qui a cotisé puis fait un don ponctuel en dernier apparaît donc en « Don ponctuel ».
 
 ## Rendre le Sheet lisible par l'app
 
