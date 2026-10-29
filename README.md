@@ -168,12 +168,12 @@ Prévisualisation rapide dans le Sheet, sans code :
 
 Première brique, sans Apps Script : une page web statique dans [`docs/`](docs/), servie par GitHub Pages, installable sur un téléphone comme une app.
 
-- **URL** : https://coopdemenil.github.io/scan/
+- **URL** : https://coopdemenil.github.io/ (le dépôt s'appelle `coopdemenil.github.io` : c'est ce nom qui fait que GitHub Pages sert `docs/` à la racine du domaine ; les anciennes adresses `https://coopdemenil.github.io/scan/…` sont redirigées par [`docs/404.html`](docs/404.html), les QR déjà imprimés ou partagés restent valables)
 - **Source unique** : l'onglet **Transactions** du Google Sheet, qui contient l'export CSV des transactions Open Collective. Aucun autre onglet n'est lu.
-- **Identifiant d'une carte** : le pseudo Open Collective du contributeur, colonne « Opposite Account Handle » (ex. `max73`). C'est ce que le QR code encode, sous la forme `https://coopdemenil.github.io/scan/?id=max73`.
+- **Identifiant d'une carte** : le pseudo Open Collective du contributeur, colonne « Opposite Account Handle » (ex. `max73`). C'est ce que le QR code encode, sous la forme `https://coopdemenil.github.io/?id=max73`.
 - **Ce qu'affiche l'app après un scan** : le nom du contributeur, son palier (texte entre parenthèses de la description, ex. « Cotisation mensuelle »), « À jour ce mois-ci » ou « Pas de contribution ce mois-ci », la date et le montant de la dernière contribution, et le montant net des 6 derniers mois.
 - **Route `?id=<pseudo>`** : affiche directement la fiche, pour un QR scanné avec l'app caméra native du téléphone.
-- **Cartes de test** : https://coopdemenil.github.io/scan/cartes liste les sociétaires avec leur QR, une recherche par nom ou pseudo, et ouvre la fiche d'un sociétaire au toucher.
+- **Cartes de test** : https://coopdemenil.github.io/cartes liste les sociétaires avec leur QR, une recherche par nom ou pseudo, et ouvre la fiche d'un sociétaire au toucher.
 
 ## Règles de calcul
 

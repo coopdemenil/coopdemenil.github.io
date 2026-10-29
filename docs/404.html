@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coop Scan</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // L'app vivait sous /scan/ quand le dépôt s'appelait « scan ». Les QR codes et
+    // liens partagés à cette époque pointent encore dessus : on retire ce préfixe
+    // et on garde le reste de l'adresse (page, ?id=…), puis on redirige.
+    (function () {
+      var m = location.pathname.match(/^\/scan(\/.*)?$/);
+      if (m) location.replace((m[1] || '/') + location.search + location.hash);
+    })();
+  </script>
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #000; color: #fff; font-family: Jost, system-ui, sans-serif; text-align: center; padding: 16px; }
+    a { color: #fff; }
+  </style>
+</head>
+<body>
+  <p>Page introuvable.<br><a href="/">Retour au scanner</a></p>
+</body>
+</html>
