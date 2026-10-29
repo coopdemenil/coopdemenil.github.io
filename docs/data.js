@@ -50,17 +50,14 @@ function parseAmount(s) {
   return isNaN(n) ? 0 : n;
 }
 
-// Palier entre parenthèses en fin de description, ex. "(Cotisation mensuelle)".
+// Deux paliers seulement à l'affichage. Open Collective met le nom du palier entre
+// parenthèses en fin de description (« (Cotisation mensuelle) », « (Précaires, étudiants,
+// RSA, AAH...) », etc.) : quel qu'il soit, c'est une cotisation mensuelle. Une contribution
+// sans palier est un don ponctuel.
+const TIER_MONTHLY = 'Cotisation mensuelle';
+const TIER_ONE_OFF = 'Don ponctuel';
 function tierOf(description) {
-  const m = String(description || '').match(/\(([^)]+)\)\s*$/);
-  return m ? shortTier(m[1]) : '';
-}
-
-// Palier long raccourci aux trois premiers éléments :
-// « Précaires, étudiants, RSA, AAH, Aspa, ADA... » → « Précaires, étudiants, RSA… »
-function shortTier(tier) {
-  const parts = tier.replace(/\s*(\.\.\.|…)\s*$/, '').split(',').map(x => x.trim()).filter(Boolean);
-  return parts.length > 3 ? `${parts.slice(0, 3).join(', ')}…` : tier;
+  return /\([^)]+\)\s*$/.test(String(description || '')) ? TIER_MONTHLY : TIER_ONE_OFF;
 }
 
 function rowsToTransactions(rows) {

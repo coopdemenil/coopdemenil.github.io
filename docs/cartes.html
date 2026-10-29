@@ -70,7 +70,7 @@
             <a class="card" href="./?id=${encodeURIComponent(m.id)}">
               <img class="flower" src="./icons/flower.png" alt="" width="56" height="56">
               <h3>${esc(m.name)}</h3>
-              ${m.tier ? `<div class="tier">${esc(m.tier)}</div>` : ''}
+              <div class="tier">${esc(m.tier)}</div>
               <img class="qr" src="${qr}" alt="QR ${esc(m.name)}" loading="lazy" width="160" height="160">
               <small>${esc(m.id)}</small>
             </a>
